@@ -2,7 +2,7 @@
 #   Properties:
 #     id (string) - dom id of the subscriber
 #     stream (Stream) - stream to which you are subscribing
-#   Methods: 
+#   Methods:
 #     getAudioVolume()
 #     getImgData() : String
 #     getStyle() : Objects
@@ -33,8 +33,7 @@ class TBSubscriber
   subscribeToVideo: (value) ->
     return @
 
-  constructor: (stream, divName, properties) ->
-    element = document.getElementById(divName)
+  constructor: (stream, element, properties) ->
     pdebug "creating subscriber", properties
     @streamId = stream.streamId
     if(properties? && properties.width=="100%" && properties.height == "100%")
