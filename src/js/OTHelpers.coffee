@@ -11,24 +11,7 @@ getPosition = (divName) ->
   # Get the position of element
   pubDiv = document.getElementById(divName)
   if !pubDiv then return {}
-  computedStyle = if window.getComputedStyle then getComputedStyle(pubDiv, null) else {}
-  width = pubDiv.offsetWidth
-  height = pubDiv.offsetHeight
-  curtop = pubDiv.offsetTop
-  curleft = pubDiv.offsetLeft
-  while(pubDiv = pubDiv.offsetParent)
-    curleft += pubDiv.offsetLeft
-    curtop += pubDiv.offsetTop
-  marginTop = parseInt(computedStyle.marginTop) || 0
-  marginBottom = parseInt(computedStyle.marginBottom) || 0
-  marginLeft = parseInt(computedStyle.marginLeft) || 0
-  marginRight = parseInt(computedStyle.marginRight) || 0
-  return {
-    top:curtop + marginTop
-    left:curleft + marginLeft
-    width:width - (marginLeft + marginRight)
-    height:height - (marginTop + marginBottom)
-  }
+  return pubDiv.getBoundingClientRect()
 
 replaceWithVideoStream = (divName, streamId, properties) ->
   typeClass = if streamId == PublisherStreamId then PublisherTypeClass else SubscriberTypeClass

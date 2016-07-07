@@ -163,30 +163,12 @@ var TBError, TBGenerateDomHelper, TBGetScreenRatios, TBGetZIndex, TBSuccess, TBU
 streamElements = {};
 
 getPosition = function(divName) {
-  var computedStyle, curleft, curtop, height, marginBottom, marginLeft, marginRight, marginTop, pubDiv, width;
+  var pubDiv;
   pubDiv = document.getElementById(divName);
   if (!pubDiv) {
     return {};
   }
-  computedStyle = window.getComputedStyle ? getComputedStyle(pubDiv, null) : {};
-  width = pubDiv.offsetWidth;
-  height = pubDiv.offsetHeight;
-  curtop = pubDiv.offsetTop;
-  curleft = pubDiv.offsetLeft;
-  while ((pubDiv = pubDiv.offsetParent)) {
-    curleft += pubDiv.offsetLeft;
-    curtop += pubDiv.offsetTop;
-  }
-  marginTop = parseInt(computedStyle.marginTop) || 0;
-  marginBottom = parseInt(computedStyle.marginBottom) || 0;
-  marginLeft = parseInt(computedStyle.marginLeft) || 0;
-  marginRight = parseInt(computedStyle.marginRight) || 0;
-  return {
-    top: curtop + marginTop,
-    left: curleft + marginLeft,
-    width: width - (marginLeft + marginRight),
-    height: height - (marginTop + marginBottom)
-  };
+  return pubDiv.getBoundingClientRect();
 };
 
 replaceWithVideoStream = function(divName, streamId, properties) {
