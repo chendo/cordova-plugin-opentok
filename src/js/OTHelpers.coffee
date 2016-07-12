@@ -25,7 +25,6 @@ replaceWithVideoStream = (divName, streamId, properties) ->
   typeClass = if streamId == PublisherStreamId then PublisherTypeClass else SubscriberTypeClass
   element = document.getElementById(divName)
 
-  element.setAttribute( "class", "OT_root #{typeClass}" )
   element.setAttribute( "data-streamid", streamId )
 
   streamElements[ streamId ] = element

@@ -185,7 +185,6 @@ replaceWithVideoStream = function(divName, streamId, properties) {
   var element, typeClass;
   typeClass = streamId === PublisherStreamId ? PublisherTypeClass : SubscriberTypeClass;
   element = document.getElementById(divName);
-  element.setAttribute("class", "OT_root " + typeClass);
   element.setAttribute("data-streamid", streamId);
   streamElements[streamId] = element;
   return element;
