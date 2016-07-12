@@ -13,11 +13,11 @@ getPosition = (divName) ->
   if !pubDiv then return {}
 
   rect = Object.assign({}, pubDiv.getClientRects()[0])
-  if rect.left === 0 && rect.right > 0
+  if rect.left == 0 && rect.right > 0
     rect.left = window.innerWidth - rect.right - rect.width
   if rect.left < 0
     rect.left = 0
-  if rect.top === 0 && rect.bottom > 0
+  if rect.top == 0 && rect.bottom > 0
     rect.top = window.innerHeight - rect.bottom - rect.height
   return rect
 

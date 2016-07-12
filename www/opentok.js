@@ -163,36 +163,31 @@ var TBError, TBGenerateDomHelper, TBGetScreenRatios, TBGetZIndex, TBSuccess, TBU
 streamElements = {};
 
 getPosition = function(divName) {
-  var pubDiv;
+  var pubDiv, rect;
   pubDiv = document.getElementById(divName);
   if (!pubDiv) {
     return {};
   }
-  return pubDiv.getBoundingClientRect();
+  rect = Object.assign({}, pubDiv.getClientRects()[0]);
+  if (rect.left === 0 && rect.right > 0) {
+    rect.left = window.innerWidth - rect.right - rect.width;
+  }
+  if (rect.left < 0) {
+    rect.left = 0;
+  }
+  if (rect.top === 0 && rect.bottom > 0) {
+    rect.top = window.innerHeight - rect.bottom - rect.height;
+  }
+  return rect;
 };
 
 replaceWithVideoStream = function(divName, streamId, properties) {
-  var element, internalDiv, typeClass, videoElement;
+  var element, typeClass;
   typeClass = streamId === PublisherStreamId ? PublisherTypeClass : SubscriberTypeClass;
   element = document.getElementById(divName);
   element.setAttribute("class", "OT_root " + typeClass);
   element.setAttribute("data-streamid", streamId);
-  element.style.width = properties.width + "px";
-  element.style.height = properties.height + "px";
-  element.style.overflow = "hidden";
-  element.style['background-color'] = "#000000";
   streamElements[streamId] = element;
-  internalDiv = document.createElement("div");
-  internalDiv.setAttribute("class", VideoContainerClass);
-  internalDiv.style.width = "100%";
-  internalDiv.style.height = "100%";
-  internalDiv.style.left = "0px";
-  internalDiv.style.top = "0px";
-  videoElement = document.createElement("video");
-  videoElement.style.width = "100%";
-  videoElement.style.height = "100%";
-  internalDiv.appendChild(videoElement);
-  element.appendChild(internalDiv);
   return element;
 };
 
