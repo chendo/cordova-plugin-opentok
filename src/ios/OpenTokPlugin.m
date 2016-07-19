@@ -73,6 +73,10 @@
     int height = [[command.arguments objectAtIndex:4] intValue];
     int zIndex = [[command.arguments objectAtIndex:5] intValue];
 
+    top = top + [UIApplication sharedApplication].statusBarFrame.size.height;
+
+    NSLog(@"Dimensions: %d %d %d %d %d", top, left, width, height, zIndex);
+
     NSString* publishAudio = [command.arguments objectAtIndex:6];
     if ([publishAudio isEqualToString:@"false"]) {
         bpubAudio = NO;
@@ -109,6 +113,11 @@
     int width = [[command.arguments objectAtIndex:3] intValue];
     int height = [[command.arguments objectAtIndex:4] intValue];
     int zIndex = [[command.arguments objectAtIndex:5] intValue];
+
+    top = top + [UIApplication sharedApplication].statusBarFrame.size.height;
+
+    NSLog(@"Dimensions: %d %d %d %d %d", top, left, width, height, zIndex);
+
     if ([sid isEqualToString:@"TBPublisher"]) {
         NSLog(@"The Width is: %d", width);
         _publisher.view.frame = CGRectMake(left, top, width, height);
@@ -218,6 +227,10 @@
     int width = [[command.arguments objectAtIndex:3] intValue];
     int height = [[command.arguments objectAtIndex:4] intValue];
     int zIndex = [[command.arguments objectAtIndex:5] intValue];
+
+    top = top + [UIApplication sharedApplication].statusBarFrame.size.height;
+
+    NSLog(@"Dimensions: %d %d %d %d %d", top, left, width, height, zIndex);
 
     // Acquire Stream, then create a subscriber object and put it into dictionary
     OTStream* myStream = [streamDictionary objectForKey:sid];
