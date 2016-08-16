@@ -11,8 +11,16 @@ getPosition = (divName) ->
   # Get the position of element
   pubDiv = document.getElementById(divName)
   if !pubDiv then return {}
+  origRect = pubDiv.getClientRects()[0]
 
-  rect = Object.assign({}, pubDiv.getClientRects()[0])
+  rect = {
+    top: origRect.top,
+    left: origRect.left,
+    bottom: origRect.bottom,
+    right: origRect.right,
+    width: origRect.width,
+    height: origRect.height,
+  }
   if rect.left == 0 && rect.right > 0
     rect.left = window.innerWidth - rect.right - rect.width
   if rect.left < 0
