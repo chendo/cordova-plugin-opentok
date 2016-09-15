@@ -92,9 +92,8 @@
     [_publisher setPublishVideo:bpubVideo];
     [self.webView.superview addSubview:_publisher.view];
     [_publisher.view setFrame:CGRectMake(left, top, width, height)];
-    if (zIndex>0) {
-        _publisher.view.layer.zPosition = zIndex;
-    }
+    _publisher.view.layer.zPosition = zIndex;
+
     NSString* cameraPosition = [command.arguments objectAtIndex:8];
     if ([cameraPosition isEqualToString:@"back"]) {
         _publisher.cameraPosition = AVCaptureDevicePositionBack;
@@ -246,9 +245,7 @@
     [subscriberDictionary setObject:sub forKey:myStream.streamId];
 
     [sub.view setFrame:CGRectMake(left, top, width, height)];
-    if (zIndex>0) {
-        sub.view.layer.zPosition = zIndex;
-    }
+    sub.view.layer.zPosition = zIndex;
     [self.webView.superview addSubview:sub.view];
 
     // Return to JS event handler
