@@ -232,16 +232,7 @@ TBGenerateDomHelper = function() {
 };
 
 TBGetZIndex = function(ele) {
-  var val;
-  while ((ele != null)) {
-    val = document.defaultView.getComputedStyle(ele, null).getPropertyValue('z-index');
-    console.log(val);
-    if (parseInt(val)) {
-      return val;
-    }
-    ele = ele.offsetParent;
-  }
-  return 0;
+  return ele.style.zIndex;
 };
 
 TBGetScreenRatios = function() {
