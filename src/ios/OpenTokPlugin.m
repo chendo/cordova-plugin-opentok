@@ -272,6 +272,8 @@
     OTConnection* c = [connectionDictionary objectForKey: [command.arguments objectAtIndex:2]];
     NSLog(@"iOS signaling to connection %@", c);
     [_session signalWithType:[command.arguments objectAtIndex:0] string:[command.arguments objectAtIndex:1] connection:c error:nil];
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 
