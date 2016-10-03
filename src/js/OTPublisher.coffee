@@ -4,7 +4,7 @@
 #     stream - The Stream object corresponding to the stream of the publisher
 #     session (Session) — The Session to which the Publisher is publishing a stream. If the Publisher is not publishing a stream to a Session, this property is set to null.
 #     replaceElementId (String) — The ID of the DOM element that was replaced when the Publisher video stream was inserted.
-#   Methods: 
+#   Methods:
 #     destroy():Publisher - not yet implemented
 #     getImgData() : String - not yet implemented
 #     getStyle() : Object - not yet implemented
@@ -66,7 +66,6 @@ class TBPublisher
     return @
 
   removePublisherElement: =>
-    @pubElement.parentNode.removeChild(@pubElement)
     @pubElement = false
 
   destroy: ->
