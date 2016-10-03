@@ -90,8 +90,9 @@
     _publisher = [[OTPublisher alloc] initWithDelegate:self name:name];
     [_publisher setPublishAudio:bpubAudio];
     [_publisher setPublishVideo:bpubVideo];
-    [self.webView.superview addSubview:_publisher.view];
     [_publisher.view setFrame:CGRectMake(left, top, width, height)];
+    _publisher.view.userInteractionEnabled = false;
+    [self.webView.superview addSubview:_publisher.view];
     _publisher.view.layer.zPosition = zIndex;
 
     NSString* cameraPosition = [command.arguments objectAtIndex:8];
@@ -246,6 +247,7 @@
 
     [sub.view setFrame:CGRectMake(left, top, width, height)];
     sub.view.layer.zPosition = zIndex;
+    sub.view.userInteractionEnabled = false;
     [self.webView.superview addSubview:sub.view];
 
     // Return to JS event handler
@@ -510,4 +512,3 @@
 
 
 @end
-
