@@ -66,7 +66,8 @@ TBGenerateDomHelper = ->
   return domId
 
 TBGetZIndex = (ele) ->
-  return ele.style.zIndex || window.getComputedStyle(ele).getPropertyValue("z-index")
+  zIndex = parseInt(ele.style.zIndex)
+  return zIndex || parseInt(window.getComputedStyle(ele).getPropertyValue("z-index"))
 
 TBGetScreenRatios = ()->
     # Ratio between browser window size and viewport size

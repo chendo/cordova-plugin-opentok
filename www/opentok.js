@@ -232,7 +232,9 @@ TBGenerateDomHelper = function() {
 };
 
 TBGetZIndex = function(ele) {
-  return ele.style.zIndex || window.getComputedStyle(ele).getPropertyValue("z-index");
+  var zIndex;
+  zIndex = parseInt(ele.style.zIndex);
+  return zIndex || parseInt(window.getComputedStyle(ele).getPropertyValue("z-index"));
 };
 
 TBGetScreenRatios = function() {
