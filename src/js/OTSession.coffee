@@ -61,7 +61,7 @@ class TBSession
     data = if signal.data? then signal.data else ""
     to = if signal.to? then signal.to else ""
     to = if typeof(to)=="string" then to else to.connectionId
-    Cordova.exec(TBSuccess, TBError, OTPlugin, "signal", [type, data, to] )
+    Cordova.exec(signalCompletionHandler, signalCompletionHandler, OTPlugin, "signal", [type, data, to] )
     return @
   subscribe: (one, two, three, four) ->
     @subscriberCallbacks = {}

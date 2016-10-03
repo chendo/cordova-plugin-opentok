@@ -503,7 +503,7 @@ TBSession = (function() {
     data = signal.data != null ? signal.data : "";
     to = signal.to != null ? signal.to : "";
     to = typeof to === "string" ? to : to.connectionId;
-    Cordova.exec(TBSuccess, TBError, OTPlugin, "signal", [type, data, to]);
+    Cordova.exec(signalCompletionHandler, signalCompletionHandler, OTPlugin, "signal", [type, data, to]);
     return this;
   };
 
