@@ -330,7 +330,6 @@ TBPublisher = (function() {
   };
 
   TBPublisher.prototype.removePublisherElement = function() {
-    this.pubElement.parentNode.removeChild(this.pubElement);
     return this.pubElement = false;
   };
 
@@ -681,7 +680,6 @@ TBSession = (function() {
     if (stream) {
       element = streamElements[stream.streamId];
       if (element) {
-        element.parentNode.removeChild(element);
         delete streamElements[stream.streamId];
         TBUpdateObjects();
       }
